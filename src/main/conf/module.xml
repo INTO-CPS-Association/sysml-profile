@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Module id="${project.name}" class="org.modelio.module.intocps.impl.INTOCPSModule" binaryversion="4.0.01" version="${project.version}" schema-level="2" uid="b9a03ce9-41b6-4c75-8db4-99022e752252">
+    <ClassPath>
+        <PathEntry path="lib/${project.artifactId}-${project.version}.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/modelermodule-8.5.14.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/session-3.7.1.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/sysmlarchitect-3.9.01.jar"/>
+        <PathEntry path="lib/json-schema-validator-2.2.6.jar"/>
+        <PathEntry path="lib/jsr305-3.0.0.jar"/>
+        <PathEntry path="lib/jopt-simple-4.6.jar"/>
+        <PathEntry path="lib/org.modelio.modelermodule-9.0.06.jar"/>
+        <PathEntry path="lib/jackson-core-2.8.7.jar"/>
+        <PathEntry path="lib/jackson-databind-2.8.7.jar"/>
+        <PathEntry path="lib/jackson-annotations-2.8.7.jar"/>
+        <PathEntry path="lib/org.apache.sling.commons.json-2.0.6.jar"/>
+        <PathEntry path="lib/org.eclipse.jgit-4.5.0.201609210915-r.jar"/>
+        <PathEntry path="lib/jsch-0.1.53.jar"/>
+        <PathEntry path="lib/JavaEWAH-0.7.9.jar"/>
+        <PathEntry path="lib/httpclient-4.3.6.jar"/>
+        <PathEntry path="lib/httpcore-4.3.3.jar"/>
+        <PathEntry path="lib/commons-logging-1.1.3.jar"/>
+        <PathEntry path="lib/commons-codec-1.6.jar"/>
+        <PathEntry path="lib/slf4j-api-1.7.2.jar"/>
+        <PathEntry path="lib/json-schema-core-1.2.5.jar"/>
+        <PathEntry path="lib/jackson-coreutils-1.8.jar"/>
+        <PathEntry path="lib/msg-simple-1.1.jar"/>
+        <PathEntry path="lib/btf-1.2.jar"/>
+        <PathEntry path="lib/guava-16.0.1.jar"/>
+        <PathEntry path="lib/joda-time-2.3.jar"/>
+        <PathEntry path="lib/mailapi-1.4.3.jar"/>
+        <PathEntry path="lib/activation-1.1.jar"/>
+        <PathEntry path="lib/libphonenumber-6.2.jar"/>
+        <PathEntry path="lib/uri-template-0.9.jar"/>
+        <PathEntry path="lib/rhino-1.7R4.jar"/>
+    </ClassPath>
+    <Profiles>
+        <Profile uid="1e92b5a0-4d44-40d1-9339-b088265df590" id="INTOCPS"/>
+        <Profile uid="25337a0e-7f00-4647-ac49-414f8597ba57" id="INTOCPS::Modelling">
+            <Stereotype name="ArchitectureDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.architecturediagram.label" uid="4ce56474-e7a1-46e3-a5b0-a165d85cd3b6">
+                <Icon path="res/icons/architecturestructurediagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="ConnectionDiagram" metaclass="ObjectDiagram" is-hidden="false" label="%stereotype.connectiondiagram.label" uid="0a40650b-4f72-4e18-8fb4-4efe7f89d535">
+                <Icon path="res/icons/connectiondiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Variable" metaclass="Attribute" is-hidden="false" label="%stereotype.variable.label" uid="9370cbd9-c177-4594-b614-2e9ed4c3a439">
+                <Icon path="res/icons/variable.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="Variable_variableKind" uid="f33eaffb-c38f-4bbf-8c3a-66f30766b707" label="%tagtype.variable.kind.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="Variable_minimumValue" uid="44309db8-cbc2-428b-9d2a-99a084b28e50" label="%tagtype.variable.min.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="Variable_maximumValue" uid="79e01116-43ac-4c77-8545-7d4bc8456762" label="%tagtype.variable.max.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="Parameter" metaclass="Attribute" owner-stereotype="mref#'Variable' {9370cbd9-c177-4594-b614-2e9ed4c3a439} Stereotype" is-hidden="false" label="%stereotype.parameter.label" uid="cb4ad4d7-d537-4f97-a935-7cba81d3dbed">
+                <Icon path="res/icons/parameter.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="System" metaclass="Class" owner-stereotype="mref#'Block' {00bc42a4-0000-19c9-0000-000000000000} Stereotype" is-hidden="false" label="%stereotype.system.label" uid="c1fa91b1-ddd0-4521-b1ab-883550b7c337">
+                <Icon path="res/icons/system.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Component" metaclass="Class" owner-stereotype="mref#'Block' {00bc42a4-0000-19c9-0000-000000000000} Stereotype" is-hidden="true" label="%stereotype.component.label" uid="d08ce6e1-c620-4f4c-bd8f-dc7574c4671a">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="Component_kind" uid="4d3dea1a-7494-48e4-a74a-c13e045bfe84" label="%tagtype.component.kind.label" parameter-card="1" is-hidden="true" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="EComponent" metaclass="Class" owner-stereotype="mref#'Component' {d08ce6e1-c620-4f4c-bd8f-dc7574c4671a} Stereotype" is-hidden="false" label="%stereotype.ecomponent.label" uid="b988949d-fefe-4623-b48e-8161edb603f7">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="EComponent_platform" uid="6d54dcce-4c9d-4c9d-8189-43e75e7ccf31" label="%tagtype.component.platform.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="EComponent_modelTy" uid="b6d8966b-58ec-45ee-b8e2-cf0a9e21470c" label="%tagtype.component.modelty.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="EComponent_guid" uid="55c344fa-b72e-477d-ab79-370ac53bc104" label="%tagtype.component.guid.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="POComponent" metaclass="Class" owner-stereotype="mref#'Component' {d08ce6e1-c620-4f4c-bd8f-dc7574c4671a} Stereotype" is-hidden="false" label="%stereotype.pocomponent.label" uid="788b8bb2-ef45-412a-a60a-b13b693eab07">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="CComponent" metaclass="Class" owner-stereotype="mref#'Component' {d08ce6e1-c620-4f4c-bd8f-dc7574c4671a} Stereotype" is-hidden="false" label="%stereotype.ccomponent.label" uid="edf11cbc-1844-405d-8944-605700074c35">
+                <Icon path="res/icons/composition.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="StrtType" metaclass="Interface" is-hidden="false" label="%stereotype.strttype.label" uid="6d5f9721-01c0-4573-a22d-9609f9d5c464">
+                <Icon path="res/icons/strtype.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DType" metaclass="DataType" is-hidden="false" label="%stereotype.dtype.label" uid="9999783b-351d-447a-8673-a1c782c2e1ae">
+                <Icon path="res/icons/dtype.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="DType_super" uid="bbf9f862-71f6-49f8-a868-eed03c502336" label="%tagtype.dtype.super.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="UnitType" metaclass="DataType" owner-stereotype="mref#'DType' {9999783b-351d-447a-8673-a1c782c2e1ae} Stereotype" is-hidden="false" label="%stereotype.unittype.label" uid="99035eff-265b-4d74-8a8b-700d83f319e7">
+                <Icon path="res/icons/unittype.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="UnitType_factor" uid="f5b32c78-258b-45dc-bc8f-94c7992141ec" label="%tagtype.unittype.factor.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="UnitType_offset" uid="6001349b-4f08-486d-bc44-00c029b71dfb" label="%tagtype.unittype.offset.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="SimpleType" metaclass="DataType" owner-stereotype="mref#'DType' {9999783b-351d-447a-8673-a1c782c2e1ae} Stereotype" is-hidden="false" label="%stereotype.unittype.label" uid="e0a2c0f9-ea28-4f46-b3e6-ea1c572e69ab">
+                <Icon path="res/icons/simpletype.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="SimpleType_unit" uid="a8571a3f-ff3e-44a8-bf59-bcd8bb2a24c3" label="%tagtype.unittype.unit.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="SimpleType_quantity" uid="2758b104-7fe3-4015-9a64-ed46524d982a" label="%tagtype.unittype.unit.quantity" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="SimpleType_min" uid="0aaabad6-8234-40c3-84f4-a66be3f817fb" label="%tagtype.unittype.unit.min" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="FlowPort" metaclass="Port" is-hidden="false" label="%stereotype.flowport.label" uid="197dab5e-85eb-4fef-8313-f113b85ca2b4">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="FlowPort_depends" uid="55e72dd9-bf28-4967-a4a3-bd66853567ac" label="%tagtype.flowport.depends.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                    <TagType name="FlowPort_min" uid="6384bb5b-201b-43b4-aa84-e91dd63c1e9b" label="%tagtype.flowport.min.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="FlowPort_max" uid="221dd2e8-45d9-4917-bc58-9ffafc422db3" label="%tagtype.flowport.max.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="FlowPort_direction" uid="e4a31e60-3c87-4816-ad26-4b1f922b7ffd" label="%tagtype.flowport.direction.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="Unit" metaclass="Generalization" is-hidden="true" label="%stereotype.unitfactor.label" uid="8ed45a9f-0bf9-4ac5-b8ee-af342a184a5c">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="Unit_factor" uid="1b10dd44-bebe-40a7-b2a8-698ae691ecc9" label="%tagtype.unit.factor.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="BlockInstance" metaclass="Instance" is-hidden="false" label="%stereotype.blockinstance.label" uid="281c6cee-4f91-476d-bbed-ac66449f0897">
+                <Icon path="res/icons/blockinstance.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="BlockInstance_isSUT" uid="7ed8a304-b948-4e08-8106-9d89359dc553" label="%tagtype.blockinstance.isSUT.label" parameter-card="*" is-hidden="trues" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="VariableInstance" metaclass="AttributeLink" is-hidden="false" label="%stereotype.variableinstance.label" uid="5a0feb25-f460-43c0-b924-7c59ee6677ba">
+                <Icon path="res/icons/variableinstance.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Subsystem" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.subsystem.label" uid="50d159b2-4d32-40ad-8990-c686943cb1f3">
+                <Icon path="res/icons/subsystem.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Cyber" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.cyber.label" uid="1c2bc602-60a9-401c-923b-0c12269afd17">
+                <Icon path="res/icons/cyber.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Physical" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.physical.label" uid="c590a3bb-0ca5-4d18-af5c-cade72a3f371">
+                <Icon path="res/icons/physical.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Environment" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.environment.label" uid="5769ccf5-fd2c-4b1d-aace-9f75941bcf70">
+                <Icon path="res/icons/environment.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Visualisation" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.visualisation.label" uid="f7d0efe9-578f-40db-ad59-043fa8d9ef99">
+                <Icon path="res/icons/visualisation.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Composition" metaclass="Class" owner-stereotype="" is-hidden="false" label="%stereotype.composition.label" uid="c1764939-be86-4bd2-86ad-095fbff6bbbe">
+                <Icon path="res/icons/composition.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Depends" metaclass="Dependency" owner-stereotype="" is-hidden="true" label="%stereotype.depends.label" uid="22d48693-4c9b-4f88-8aa1-284a2c772706">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+        </Profile>
+        <Profile uid="0b776c41-655f-4972-9b78-4a80a69be46e" id="INTOCPS::DSE">
+            <Stereotype name="Reference" metaclass="Dependency" owner-stereotype="" is-hidden="false" label="%stereotype.reference.label" uid="f1ae046a-76f9-4c92-8a77-d20f77a2c03c">
+                <Icon path="res/icons/reference.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="ParetoValue" metaclass="Attribute" is-hidden="false" label="%stereotype.paretovalue.label" uid="ae75b8e5-f544-4c2c-bece-9067c1d5ebef">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="ParetoValue_direction" uid="9d113f0a-c89e-482b-a170-52d476b18198" label="%tagtype.paretovalue.direction.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="DSEObjectiveDefinitionDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.dseobjdefdiagram.label" uid="72b9cdb9-78de-4b93-a085-6995d60b8dbd">
+                <Icon path="res/icons/dseobjdefdiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DSEObjectiveConnectionDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.dseobjcondiagram.label" uid="b0385dac-ad33-4198-b02c-fbe704830ff2">
+                <Icon path="res/icons/dseobjcondiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DSERankingDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.dserankingdiagram.label" uid="57c988ca-69cc-4d39-94e2-559f956c08d8">
+                <Icon path="res/icons/dserankingdiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DSEParameterDefinitionDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.dseparamdefdiagram.label" uid="451bd352-7998-481b-8541-4643820d5890">
+                <Icon path="res/icons/dseparamdefdiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DSEParameterConnectionDiagram" metaclass="ClassDiagram" is-hidden="false" label="%stereotype.dseparamcondiagram.label" uid="a10fcfd0-2e47-4221-81f3-85478febdca3">
+                <Icon path="res/icons/dseparamcondiagram.png"/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="ScriptParameter_Port" metaclass="Port" is-hidden="false" label="%stereotype.scriptparameter.label" uid="15e58779-745e-4d6e-b232-d7003af89a21">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="ScriptParameter_Port_value" uid="b6e99b33-c1df-4eaa-91ea-9318ab313d42" label="%tagtype.scriptparameter.value.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="DSEAnalysis" metaclass="Class" is-hidden="false" label="%stereotype.dseanalysis.label" uid="37659a36-aa75-40fe-95e0-ed69ef2c0a56">
+                <Icon path="res/icons/dseanalysis.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="DSEAnalysis_ranking" uid="3c4cb3a7-fca5-425c-8b77-3badbde16716" label="ranking" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="DSEAnalysis_scenarios" uid="fece229a-88ed-4f7f-ab3b-bccc4cb6afda" label="scenarios" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ObjectiveConstraint" metaclass="Class" is-hidden="false" label="%stereotype.objectiveconstraint.label" uid="77aca01c-5c59-4fd0-b24d-4697f856b129">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="ObjectiveConstraint_predicate" uid="c1799312-fc1f-4da2-a0a0-bd4e26b58607" label="%tagtype.objectiveconstraint.predicate.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="ExternalScript" metaclass="Class" is-hidden="false" label="%stereotype.externalscript.label" uid="bf3bc045-3cc8-48c9-997a-77cea68449a2">
+                <Icon path="res/icons/externalscript.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="ExternalScript_file" uid="b9af5d26-f2ad-452a-ace5-b35f9eb0a7d3" label="%tagtype.externalscript.file.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                    <TagType name="ExternalScript_weight" uid="672cdf07-e632-436b-ae9c-774778b08932" label="weight" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="InternalFunction" metaclass="Class" is-hidden="false" label="%stereotype.internalfunction.label" uid="6d1591ff-59de-47b6-ae4e-7cc7a6f07b01">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="InternalFunction_functionTp" uid="b5f304e2-6a61-475a-bc76-e2fa8e60b6b5" label="%tagtype.internalfunction.functiontp.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+            <Stereotype name="Ranking" metaclass="Class" is-hidden="false" label="%stereotype.ranking.label" uid="e18fe20a-4bf4-44d2-b650-764d81d08632">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Pareto" metaclass="Class" is-hidden="false" label="%stereotype.pareto.label" uid="289e186d-9c7a-4a5c-a1af-3fe00c621eb9">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="DSEParameter" metaclass="Class" is-hidden="false" label="%stereotype.parameter.label" uid="389712c5-96e3-41a9-8995-60a4a50dfa50">
+                <Icon path="res/icons/dseparameter.png"/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="Parameter_values" uid="dc5a476d-fc9d-4e41-96c1-72074511b70b" label="%tagtype.parameter.values.label" parameter-card="*" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+        </Profile>
+        <Profile uid="9dfcbede-cfbf-4fb8-9d57-3fb950aaf9dc" id="INTOCPS::Test">
+            <Stereotype name="Robutness" metaclass="Transition" is-hidden="false" label="%stereotype.robutness.label" uid="4da88364-9384-4b68-9b9b-6556d680d06b">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes/>
+            </Stereotype>
+            <Stereotype name="Literal_Value" metaclass="EnumerationLiteral" is-hidden="false" label="%stereotype.literal_value.label" uid="4763b52b-4238-4000-a6e3-dcdf56f21b1f">
+                <Icon path=""/>
+                <Image path=""/>
+                <TagTypes>
+                    <TagType name="Literal_Value_Value" uid="22fdda6a-0ecb-4d8f-a1d8-266d1e7d096c" label="%tagtype.literal_value.value.label" parameter-card="1" is-hidden="false" is-signed="false"/>
+                </TagTypes>
+            </Stereotype>
+        </Profile>
+    </Profiles>
+    <Parameters>
+        <Parameter id="IPAdresse" group="Daemon" uid="fca8e299-6fe2-41f7-b698-d155e7a724b9"/>
+        <Parameter id="Port" group="Daemon" uid="9f27fc52-a0aa-4378-92b6-dbef6cfcfb66"/>
+        <Parameter id="Name" group="Author" uid="a65e7244-7c93-4b0c-ba15-d3d01e36d7e6"/>
+        <Parameter id="Email" group="Author" uid="8ec07b06-fc20-4998-b295-4e2d9551b052"/>
+        <Parameter id="GitRepositoryPath" group="Git" uid="3a324464-8000-4d9d-a21d-b3a1fc4ed41d"/>
+        <Parameter id="Password" group="Git" uid="a9d43ddd-027c-400e-b529-6676a7e700f8"/>
+    </Parameters>
+    <Gui>
+        <Commands>
+            <Command id="Generate" label="%command.generate.label" tooltip="%command.generate.tooltip" image="res/icons/generatefmi.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Class" stereotype="Block"/>
+                <Handler class="org.modelio.module.intocps.command.menu.GenerateMD"/>
+            </Command>
+            <Command id="GenerateDSE" label="Generate DSE" tooltip="" image="res/icons/generatedse.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Class" stereotype="DSEAnalysis"/>
+                <Handler class="org.modelio.module.intocps.command.menu.GenerateDSE"/>
+            </Command>
+            <Command id="GenerateConfig" label="%command.generateconfig.label" tooltip="%command.generateconfig.tooltip" image="res/icons/generateconfig.png" group="" modify-model="false" group-image="">
+                <Scope metaclass="Instance"/>
+                <Handler class="org.modelio.module.intocps.command.menu.GenerateSimConfig"/>
+            </Command>
+            <Command id="Open" label="%command.open.label" tooltip="%command.open.tooltip" image="" group="" modify-model="true" group-image="">
+                <Scope metaclass="Instance"/>
+                <Handler class="org.modelio.module.intocps.command.menu.Open"/>
+            </Command>
+            <Command id="Reverse" label="%command.reverse.label" tooltip="%command.reverse.tooltip" image="res/icons/reversefmi.png" group="" modify-model="true" group-image="">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.menu.ReverseMD"/>
+            </Command>
+            <Command id="ArchitectureDiagramCommand" label="%command.architecturestructurediagram.label" tooltip="%command.architecturestructurediagram.tooltip" image="res/icons/architecturestructurediagram.png" modify-model="true">
+                <Scope metaclass="Package" stereotype=""/>
+                <Handler class="org.modelio.module.intocps.command.explorer.ArchitectureStructureDiagramCommand"/>
+            </Command>
+            <Command id="ConnectionDiagramCommand" label="%command.connectiondiagram.label" tooltip="%command.connectiondiagram.tooltip" image="res/icons/connectiondiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.ConnectionDiagramCommand"/>
+            </Command>
+            <Command id="DSEObjectiveConnectionDiagram" label="%command.dseobjectiveconnectiondiagram.label" tooltip="%command.dseobjectiveconnectiondiagram.tooltip" image="res/icons/dseobjcondiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.DSEObjectiveConnectionDiagram"/>
+            </Command>
+            <Command id="DSEObjectiveDefinitionDiagram" label="%command.dseobjectivedefinitiondiagram.label" tooltip="%command.dseobjectivedefinitiondiagram.tooltip" image="res/icons/dseobjdefdiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.DSEObjectiveDefinitionDiagram"/>
+            </Command>
+            <Command id="DSERankingDiagramCommand" label="%command.dserankingdiagram.label" tooltip="%command.dserankingdiagram.tooltip" image="res/icons/dserankingdiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.DSERankingDiagramCommand"/>
+            </Command>
+            <Command id="DSEParameterConnectionDiagram" label="%command.dseparameterconnectiondiagram.label" tooltip="%command.dseparameterconnectiondiagram.tooltip" image="res/icons/dseparamcondiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.DSEParameterConnectionDiagram"/>
+            </Command>
+            <Command id="DSEParameterDefinitionDiagramCommand" label="%command.dseparameterdefinitiondiagram.label" tooltip="%command.dseparameterdefinitiondiagram.tooltip" image="res/icons/dseparamdefdiagram.png" modify-model="true">
+                <Scope metaclass="Package"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.DSEParameterDefinitionDiagramCommand"/>
+            </Command>
+            <Command id="Commit" label="Commit" tooltip="Commit" image="res/icons/commit.png" modify-model="false">
+                <Scope metaclass="MObject"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.CommitCommand"/>
+            </Command>
+            <Command id="Check" label="Check" tooltip="Check" image="res/icons/check.png" modify-model="false">
+                <Scope metaclass="MObject"/>
+                <Handler class="org.modelio.module.intocps.command.explorer.CheckCommand"/>
+            </Command>
+        </Commands>
+        <Tools>
+            <Tool id="INTOCPSDType" label="%tool.diagram.dtype.label" tooltip="%tool.diagram.dtype.tooltip" image="res/icons/dtype.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.DTypeDiagramCommand">
+                    <HParameter name="metaclass" value="DataType"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSBlockInstance" label="%tool.diagram.blockinstance.label" tooltip="%tool.diagram.blockinstance.tooltip" image="res/icons/blockinstance.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.BlockInstanceDiagramCommand">
+                    <HParameter name="metaclass" value="BindableInstance"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSStrtType" label="%tool.diagram.strttype.label" tooltip="%tool.diagram.strttype.tooltip" image="res/icons/strttype.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.StrtTypeDiagramCommand">
+                    <HParameter name="metaclass" value="Interface"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSCComponent" label="%tool.diagram.ccomponent.label" tooltip="%tool.diagram.ccomponent.tooltip" image="res/icons/composition.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.CComponentDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSSystem" label="%tool.diagram.system.label" tooltip="%tool.diagram.system.tooltip" image="res/icons/system.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.SystemDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSEComponent" label="%tool.diagram.ecomponent.label" tooltip="%tool.diagram.ecomponent.tooltip" image="res/icons/subsystem.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.EComponentDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSPOComponent" label="%tool.diagram.pocomponent.label" tooltip="%tool.diagram.pocomponent.tooltip" image="res/icons/physical.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.POComponentDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSUMLComposition" label="%tool.diagram.composition.label" tooltip="%tool.diagram.composition.tooltip" image="res/icons/umlcomposition.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.CompositionDiagramCommand">
+                    <HParameter name="metaclass" value="AssociationEnd"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSUMLConnector" label="%tool.diagram.connector.label" tooltip="%tool.diagram.connector.tooltip" image="res/icons/umlconnector.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.ConnectorDiagramCommand">
+                    <HParameter name="metaclass" value="ConnectorEnd"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSUnitType" label="%tool.diagram.unittype.label" tooltip="%tool.diagram.unittype.tooltip" image="res/icons/unittype.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.UnitTypeDiagramCommand">
+                    <HParameter name="metaclass" value="DataType"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSVariable" label="%tool.diagram.variable.label" tooltip="%tool.diagram.variable.tooltip" image="res/icons/variable.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.VariableDiagramCommand">
+                    <HParameter name="metaclass" value="DataType"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSFlowPort" label="%tool.diagram.flowport.label" tooltip="%tool.diagram.flowport.tooltip" image="res/icons/flowport.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.FlowPortDiagramCommand">
+                    <HParameter name="metaclass" value="Port"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSPort" label="%tool.diagram.port.label" tooltip="%tool.diagram.port.tooltip" image="res/icons/port.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.PortDiagramCommand">
+                    <HParameter name="metaclass" value="Port"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSExternalScript" label="%tool.diagram.externalscript.label" tooltip="%tool.diagram.externalscript.tooltip" image="res/icons/externalscript.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.ExternalScriptDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSReference" label="%tool.diagram.reference.label" tooltip="%tool.diagram.reference.tooltip" image="res/icons/reference.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.ReferenceDiagramCommand">
+                    <HParameter name="metaclass" value="Dependency"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSDSEParameter" label="%tool.diagram.dseparameter.label" tooltip="%tool.diagram.dseparameter.tooltip" image="res/icons/dseparameter.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.DSEParameterDiagramCommand">
+                    <HParameter name="metaclass" value="Class"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSDSEAnalysis" label="%tool.diagram.dseanalysis.label" tooltip="%tool.diagram.dseanalysis.tooltip" image="res/icons/dseanalysis.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.DSEAnalysisDiagramCommand">
+                    <HParameter name="metaclass" value="Package"/>
+                </Handler>
+            </Tool>
+            <Tool id="INTOCPSDSEScriptParameter" label="%tool.diagram.dsescriptparameter.label" tooltip="%tool.diagram.dsescriptparameter.tooltip" image="res/icons/dsescriptparameter.png">
+                <Handler class="org.modelio.module.intocps.command.diagram.DSEScriptParameterDiagramCommand">
+                    <HParameter name="metaclass" value="Port"/>
+                </Handler>
+            </Tool>
+        </Tools>
+        <ContextualMenu>
+            <CommandRef refid="Generate" group="" group-image=""/>
+            <CommandRef refid="GenerateDSE" group="" group-image=""/>
+            <CommandRef refid="GenerateConfig" group="" group-image=""/>
+            <CommandRef refid="Reverse" group="" group-image=""/>
+            <CommandRef refid="ArchitectureDiagramCommand" group="" group-image=""/>
+            <CommandRef refid="ConnectionDiagramCommand" group="" group-image=""/>
+            <CommandRef refid="DSEObjectiveConnectionDiagram" group="" group-image=""/>
+            <CommandRef refid="DSEObjectiveDefinitionDiagram" group="" group-image=""/>
+            <CommandRef refid="DSEParameterConnectionDiagram" group="" group-image=""/>
+            <CommandRef refid="DSEParameterDefinitionDiagramCommand" group="" group-image=""/>
+            <CommandRef refid="DSERankingDiagramCommand" group="" group-image=""/>
+        </ContextualMenu>
+        <Diagrams>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#ArchitectureDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.architecturediagram.label" icon="res/icons/architecturestructurediagram.png" information="%wizard.architecturediagram.info" details="%wizard.architecturediagram.detail" preview-image="res/icons/previewarchitecturediagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.ArchitectureDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.ArchitectureDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#ArchitectureDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ObjectDiagram" stereotype="INTOCPS#ConnectionDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.connectiondiagram.label" icon="res/icons/connectiondiagram.png" information="%wizard.connectiondiagram.info" details="%wizard.connectiondiagram.detail" preview-image="res/icons/previewconnectiondiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.ConnectionDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.ConnectionDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#ConnectionDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#DSEObjectiveDefinitionDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.dseobjectivedefinitiondiagram.label" icon="res/icons/dseobjdefdiagram.png" information="%wizard.dseobjectivedefinitiondiagram.info" details="%wizard.dseobjectivedefinitiondiagram.detail" preview-image="res/icons/previewdseobjectivedefinitiondiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.DSEObjectiveDefinitionDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.DSEObjectiveDefinitionDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#DSEObjectiveDefinitionDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#DSEParameterDefinitionDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.dseparameterdefinitiondiagram.label" icon="res/icons/dseparamdefdiagram.png" information="%wizard.dseparameterdefinitiondiagram.info" details="%wizard.dseparameterdefinitiondiagram.detail" preview-image="res/icons/previewdseparameterdefinitiondiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.DSEParameterDefinitionDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.DSEParameterDefinitionDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#DSEParameterDefinitionDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#DSEParameterConnectionDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.dseparameterconnectiondiagram.label" icon="res/icons/dseparamcondiagram.png" information="%wizard.dseparameterdiagram.info" details="%wizard.dseparameterconnectiondiagram.detail" preview-image="res/icons/previewdseparameterconnectiondiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.DSEParameterConnectionDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.DSEParameterConnectionDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#DSEParameterConnectionDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#DSERankingDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.dserankingdiagram.label" icon="res/icons/dserankingdiagram.png" information="%wizard.dserankingdiagram.info" details="%wizard.dserankingdiagram.detail" preview-image="res/icons/previewdserankingdiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.DSERankingDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.DSERankingDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#DSERankingDiagram"/>
+                </Handler>
+            </DiagramType>
+            <DiagramType base-diagram="ClassDiagram" stereotype="INTOCPS#DSEObjectiveConnectionDiagram">
+                <Palette keepBasePalette="false"/>
+                <Wizard label="%wizard.dseobjectiveconnectiondiagram.label" icon="res/icons/dseobjcondiagram.png" information="%wizard.dseobjectiveconnectiondiagram.info" details="%wizard.dseobjectiveconnectiondiagram.detail" preview-image="res/icons/previewdseobjectiveconnectiondiagram.png">
+                    <Scope metaclass="Package" stereotype=""/>
+                    <Handler class="org.modelio.module.intocps.diagram.wizard.DSEObjectiveConnectionDiagramWizard"/>
+                </Wizard>
+                <Handler class="org.modelio.module.intocps.diagram.customizer.DSEObjectiveConnectionDiagramCustomizer">
+                    <HParameter name="stereotype" value="INTOCPS#DSEObjectiveConnctiongDiagram"/>
+                </Handler>
+            </DiagramType>
+        </Diagrams>
+        <Views>
+            <PropertyPage class="org.modelio.module.intocps.propertypage.INTOCPSPropertyPage" label="%propertypage.label" image="res/icons/intocps-icon.png"/>
+        </Views>
+    </Gui>
+    <Dependencies>
+        <Required name="SysMLArchitect" version="3.7.02"/>
+    </Dependencies>
+</Module>
