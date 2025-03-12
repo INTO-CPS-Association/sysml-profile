@@ -12,8 +12,8 @@ The **INTO-CPS SysML Profile for Modelio** is an open-source module that extends
 
 ## Documentation and Resources
 
-- **User Guide**: [INTO-CPS User Guide](https://into-cps-association.readthedocs.io/en/latest/tools.html#id4)
-- **Short User's Guide**: [System Modeling Guide](https://into-cps-association.github.io/systemmodelling/)
+- **Installation**: [install INTO-CPS module to Modelio](doc/Installation.md)
+- **Quick Guide**: [INTO-CPS Modelio features](doc/QuickGuide.md)
 - **Examples**: Examples are avalable in the [INTO-CPS application](https://into-cps-association.readthedocs.io/projects/desktop-application/en/latest/first_steps.html) in the SysML area for each example . Additional documentation will be migrated to this repository. Stay tuned for updates.
 
 ## TODO
