@@ -8,13 +8,13 @@ The **INTO-CPS SysML Profile for Modelio** is an open-source module that extends
 - **Connections Diagram**: Create instance diagrams to model connections between FMI input and output parameters. Suitable for generating Maestro simulation configuration JSON files.
 - **Design Space Exploration (DSE)**: Support for modeling parameters related to Design Space Exploration.
 - **FMI Model Description Import/Export**: Import and export FMI model descriptions to facilitate interoperability with other tools.
-- **Co-Simulation Configuration Export**: Export co-simulation JSON configurations for the Maestro (link)[https://into-cps-maestro.readthedocs.io/en/latest/user/getting-started.html] simulation engine.
+- **Co-Simulation Configuration Export**: Export co-simulation JSON configurations for the [Maestro](https://into-cps-maestro.readthedocs.io/en/latest/user/getting-started.html) simulation engine.
 
 ## Documentation and Resources
 
 - **User Guide**: [INTO-CPS User Guide](https://into-cps-association.readthedocs.io/en/latest/tools.html#id4)
 - **Short User's Guide**: [System Modeling Guide](https://into-cps-association.github.io/systemmodelling/)
-- **Examples**: Examples are avalable in the INTO-CPS application (link)[https://into-cps-association.readthedocs.io/projects/desktop-application/en/latest/first_steps.html] in the SysML area for each example . Additional documentation will be migrated to this repository. Stay tuned for updates.
+- **Examples**: Examples are avalable in the [INTO-CPS application](https://into-cps-association.readthedocs.io/projects/desktop-application/en/latest/first_steps.html) in the SysML area for each example . Additional documentation will be migrated to this repository. Stay tuned for updates.
 
 ## TODO
 
