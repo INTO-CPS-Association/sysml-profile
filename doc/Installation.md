@@ -1,9 +1,3 @@
----
-layout: default
-title: INTO-CPS System Modelling with Modelio 
----
-
-
 # INTO-CPS module for Modelio 
 
 
