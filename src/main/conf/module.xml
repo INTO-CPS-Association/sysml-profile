@@ -9,7 +9,7 @@
         <PathEntry path="lib/json-schema-validator-2.2.6.jar"/>
         <PathEntry path="lib/jsr305-3.0.0.jar"/>
         <PathEntry path="lib/jopt-simple-4.6.jar"/>
-        <PathEntry path="lib/org.modelio.modelermodule-9.0.06.jar"/>
+        <PathEntry path="lib/org.modelio.modelermodule-9.1.00.jar"/>
         <PathEntry path="lib/jackson-core-2.8.7.jar"/>
         <PathEntry path="lib/jackson-databind-2.8.7.jar"/>
         <PathEntry path="lib/jackson-annotations-2.8.7.jar"/>
