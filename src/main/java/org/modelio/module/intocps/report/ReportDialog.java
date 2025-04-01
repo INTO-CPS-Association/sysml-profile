@@ -3,7 +3,6 @@
 
 package org.modelio.module.intocps.report;
 
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
@@ -22,7 +21,8 @@ import org.eclipse.swt.widgets.Text;
 import org.modelio.api.modelio.navigation.INavigationService;
 import org.modelio.api.ui.ModelioDialog;
 import org.modelio.module.intocps.report.ReportModel.ElementMessage;
-import org.modelio.ui.UIColor;
+
+import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 /**
  * Dialog box used for the generation report.
@@ -134,7 +134,7 @@ class ReportDialog extends ModelioDialog {
 		GridData data_description = new GridData (SWT.FILL, SWT.FILL, true, false);
 		data_description.heightHint = 50;
 		this.descriptionText.setLayoutData (data_description);
-		this.descriptionText.setBackground (UIColor.TEXT_READONLY_BG);
+		this.descriptionText.setBackground (org.modelio.platform.ui.UIColor.TEXT_READONLY_BG);
 		return parent;
 	}
 

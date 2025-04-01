@@ -33,6 +33,7 @@ import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramService;
 import org.modelio.api.modelio.diagram.dg.IDiagramDG;
 import org.modelio.api.modelio.diagram.style.IStyleHandle;
+import org.modelio.api.modelio.model.IMetamodelExtensions;
 import org.modelio.api.modelio.model.IModelingSession;
 import org.modelio.api.modelio.model.ITransaction;
 import org.modelio.api.module.context.IModuleContext;
@@ -40,15 +41,18 @@ import org.modelio.api.module.contributor.AbstractWizardContributor;
 import org.modelio.api.module.contributor.ElementDescriptor;
 import org.modelio.api.module.contributor.diagramcreation.IDiagramWizardContributor;
 import org.modelio.metamodel.diagrams.AbstractDiagram;
+import org.modelio.metamodel.diagrams.ClassDiagram;
 import org.modelio.metamodel.diagrams.ObjectDiagram;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
 import org.modelio.metamodel.uml.infrastructure.Profile;
+import org.modelio.metamodel.uml.infrastructure.Stereotype;
 import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.module.intocps.api.IINTOCPSPeerModule;
 import org.modelio.module.intocps.api.INTOCPSStereotypes;
 import org.modelio.module.intocps.i18n.I18nMessageService;
 import org.modelio.module.intocps.impl.INTOCPSModule;
-import org.modelio.vcore.smkernel.mapi.MObject;
+import org.modelio.vcore.smkernel.mapi.MClass;
+import org.modelio.vcore.smkernel.mapi.MMetamodel;
 
 
 /**
@@ -71,7 +75,7 @@ public class DSEParameterDefinitionDiagramWizard extends AbstractWizardContribut
 
             IModelioServices modelioServices = context.getModelioServices();
 
-            diagram = session.getModel().createClassDiagram("connection diagram",
+            diagram = session.getModel().createClassDiagram(" parameter definition diagram",
                     element,
                     session.getMetamodelExtensions().getStereotype(IINTOCPSPeerModule.MODULE_NAME, INTOCPSStereotypes.CONNECTIONDIAGRAM, modelioServices.getMetamodelService().getMetamodel().getMClass(ObjectDiagram.class)));
 
@@ -102,23 +106,30 @@ public class DSEParameterDefinitionDiagramWizard extends AbstractWizardContribut
         return diagram;
     }
 
-
-    @Override
-    public boolean accept(MObject selectedElt) {
-
-
-        return ((selectedElt != null)
-                && (selectedElt instanceof Package)
-                && !(selectedElt instanceof Profile));
-
-    }
-
-
     @Override
     public ElementDescriptor getCreatedElementType() {
-        // TODO Auto-generated method stub
-        return null;
+    	IModuleContext moduleContext = getModule().getModuleContext();
+        MMetamodel metamodel = moduleContext.getModelioServices().getMetamodelService().getMetamodel();
+        MClass mClass = metamodel.getMClass(ClassDiagram.class);
+        IMetamodelExtensions extensions = moduleContext.getModelingSession().getMetamodelExtensions();
+        Stereotype stereotype = extensions.getStereotype(IINTOCPSPeerModule.MODULE_NAME, INTOCPSStereotypes.DSEPARAMETERDEFINITIONDIAGRAM, mClass);
+        return stereotype != null ? new ElementDescriptor(mClass, stereotype) : null;
     }
+
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	protected boolean checkCanCreateIn(ModelElement selectedElt) {
+		 return ((selectedElt != null)
+	                && (selectedElt instanceof Package)
+	                && !(selectedElt instanceof Profile));
+	}
 
 
 

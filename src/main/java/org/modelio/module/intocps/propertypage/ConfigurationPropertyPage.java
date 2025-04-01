@@ -29,6 +29,8 @@
 package org.modelio.module.intocps.propertypage;
 
 
+import java.nio.file.Path;
+
 import org.eclipse.swt.widgets.Composite;
 import org.modelio.api.module.IModule;
 import org.modelio.api.module.propertiesPage.IModulePropertyCustomPanel;
@@ -113,6 +115,12 @@ public class ConfigurationPropertyPage implements IModulePropertyCustomPanel{
 	public void setInput(Object arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Path getIcon() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

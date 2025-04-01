@@ -29,12 +29,12 @@
 package org.modelio.module.intocps.command.diagram;
 
 import java.util.List;
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramLink;
 import org.modelio.api.modelio.diagram.IDiagramLink.LinkRouterKind;
-import org.modelio.api.modelio.diagram.ILinkPath;
+import org.modelio.api.modelio.diagram.ILinkRoute;
 import org.modelio.api.modelio.diagram.InvalidDestinationPointException;
 import org.modelio.api.modelio.diagram.InvalidPointsPathException;
 import org.modelio.api.modelio.diagram.InvalidSourcePointException;
@@ -49,6 +49,8 @@ import org.modelio.metamodel.uml.statik.Classifier;
 import org.modelio.module.intocps.i18n.I18nMessageService;
 import org.modelio.module.intocps.impl.INTOCPSModule;
 import org.modelio.vcore.smkernel.mapi.MObject;
+
+import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 /**
  * The diagram command which handles the creation of an UML/SysML Composition
@@ -74,7 +76,7 @@ public class CompositionDiagramCommand extends DefaultLinkTool {
 
     @objid ("7aa66109-5bc9-4517-80a9-881a5a1d131f")
     @Override
-    public void actionPerformed(IDiagramHandle representation, IDiagramGraphic arg1, IDiagramGraphic arg2, LinkRouterKind kind, ILinkPath path) {
+    public void actionPerformed(IDiagramHandle representation, IDiagramGraphic arg1, IDiagramGraphic arg2, LinkRouterKind kind, ILinkRoute path) {
         IModelingSession session = INTOCPSModule.getInstance().getModuleContext().getModelingSession();
         IUmlModel model = session.getModel();
 
@@ -109,7 +111,7 @@ public class CompositionDiagramCommand extends DefaultLinkTool {
                 if (graphic instanceof IDiagramLink){
                     IDiagramLink link = (IDiagramLink) graphic;
                     link.setRouterKind(kind);
-                    link.setPath(path);
+                    link.setRoute(path);
                 }
             }
 
@@ -124,5 +126,6 @@ public class CompositionDiagramCommand extends DefaultLinkTool {
         	INTOCPSModule.logService.error(e);
         }
     }
+
 
 }

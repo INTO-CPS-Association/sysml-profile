@@ -29,12 +29,13 @@
 package org.modelio.module.intocps.command.diagram;
 
 import java.util.List;
-import org.eclipse.draw2d.geometry.Point;
+
 import org.modelio.api.modelio.diagram.IDiagramGraphic;
 import org.modelio.api.modelio.diagram.IDiagramHandle;
 import org.modelio.api.modelio.diagram.IDiagramLink;
 import org.modelio.api.modelio.diagram.IDiagramLink.LinkRouterKind;
-import org.modelio.api.modelio.diagram.ILinkPath;
+import org.modelio.api.modelio.diagram.ILinkPoint;
+import org.modelio.api.modelio.diagram.ILinkRoute;
 import org.modelio.api.modelio.diagram.InvalidDestinationPointException;
 import org.modelio.api.modelio.diagram.InvalidPointsPathException;
 import org.modelio.api.modelio.diagram.InvalidSourcePointException;
@@ -117,7 +118,7 @@ public class ConnectorDiagramCommand extends DefaultLinkTool {
     }
 
     @Override
-    public void actionPerformed(IDiagramHandle representation, IDiagramGraphic arg1, IDiagramGraphic arg2, LinkRouterKind kind, ILinkPath path) {
+    public void actionPerformed(IDiagramHandle representation, IDiagramGraphic arg1, IDiagramGraphic arg2, LinkRouterKind kind, ILinkRoute path) {
         IModelingSession session = INTOCPSModule.getInstance().getModuleContext().getModelingSession();
         IUmlModel model = session.getModel();
 
@@ -131,13 +132,13 @@ public class ConnectorDiagramCommand extends DefaultLinkTool {
             List<IDiagramGraphic> graphics = representation.unmask(connector.getLinkEnd().get(0), 0 , 0);
 
             // remove first and last point 
-            List<Point> points = path.getPoints();
+            List<ILinkPoint> points = path.getAllPoints();
             if ((points.size() > 1)
                 && (points.get(0).equals(points.get(1)))
-                && (points.get(path.getPoints().size() - 2).equals(points.get(path.getPoints().size() -1)))){
+                && (points.get(path.getAllPoints().size() - 2).equals(points.get(path.getAllPoints().size() -1)))){
                 
                 path.removePoint(0);
-                path.removePoint(path.getPoints().size() -1 );
+                path.removePoint(path.getAllPoints().size() -1 );
             }
 
             graphics = representation.unmask(connector, 0 , 0);
@@ -145,7 +146,7 @@ public class ConnectorDiagramCommand extends DefaultLinkTool {
                 if (graphic instanceof IDiagramLink){
                     IDiagramLink link = (IDiagramLink) graphic;
                     link.setRouterKind(kind);
-                    link.setPath(path);
+                    link.setRoute(path);
                 }
             }
 
