@@ -97,15 +97,15 @@ public class MDExporter {
 
 		//attributes
 		for (Attribute att : block.getOwnedAttribute()){
-			fmiFactory.exportAttribut(att);
+			md.getModelVariables().getScalarVariable().addAll(fmiFactory.exportAttribut(att));
 		}
 
 		//Bindable Instance and Port
 		for (BindableInstance bi: block.getInternalStructure()){
 			if (bi instanceof Port){
-				fmiFactory.exportPort((Port) bi);
+				md.getModelVariables().getScalarVariable().addAll(fmiFactory.exportPort((Port) bi));
 			}else{
-				fmiFactory.exportBindableInstance(bi);
+				md.getModelVariables().getScalarVariable().addAll(fmiFactory.exportBindableInstance(bi));
 			}
 		}
 
@@ -113,9 +113,6 @@ public class MDExporter {
 
 		return md;
 	}
-
-
-
 
 
 }

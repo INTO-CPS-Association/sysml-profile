@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.EList;
 import org.modelio.metamodel.uml.infrastructure.Dependency;
 import org.modelio.metamodel.uml.infrastructure.ModelElement;
@@ -108,7 +109,9 @@ public class FMIFactory {
     }
 
     public List<Fmi2ScalarVariable> exportBindableInstance(BindableInstance bi) {
-        return exportBindableInstance(bi, "");
+    	List<Fmi2ScalarVariable> result = exportBindableInstance(bi, "");
+    	this.scalarVariableMap.put(bi, result);
+        return result;
     }
 
     private List<Fmi2ScalarVariable> exportBindableInstance(BindableInstance bi, String preFix) {
@@ -152,8 +155,7 @@ public class FMIFactory {
     private void setPrimitiveType(Fmi2ScalarVariable var,
             NameSpace type, String value) {
 
-        
-
+       
         if (type.equals(ModelsUtils.getReal())){
             Fmi2ScalarVariable.Real real =  new Fmi2ScalarVariable.Real();
 
@@ -199,7 +201,9 @@ public class FMIFactory {
     
 
     public List<Fmi2ScalarVariable> exportPort(Port port) {
-        return exportPort(port, "");
+    	List<Fmi2ScalarVariable> result = exportPort(port, "");
+    	this.scalarVariableMap.put(port, result);
+        return result;
     }
 
     public List<Fmi2ScalarVariable> exportPort(Port port, String preFix) {
@@ -326,7 +330,6 @@ public class FMIFactory {
 
         ModelVariables mv = md.getModelVariables();
         List<Fmi2ScalarVariable> svs = mv.getScalarVariable();
-
 
         for (Port output : this.outputs){
 
