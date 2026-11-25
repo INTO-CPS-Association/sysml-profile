@@ -66,6 +66,7 @@ import org.modelio.module.intocps.diagram.layouter.DiagramLayouter;
 import org.modelio.module.intocps.i18n.I18nMessageService;
 import org.modelio.module.intocps.impl.INTOCPSModule;
 import org.modelio.module.intocps.model.enumeration.ImportType;
+import org.modelio.module.intocps.model.enumeration.VariableKind;
 import org.modelio.module.intocps.model.fmi.Fmi2Causality;
 import org.modelio.module.intocps.model.fmi.Fmi2ScalarVariable;
 import org.modelio.module.intocps.model.fmi.Fmi2VariableDependency;
@@ -131,7 +132,8 @@ public class MDImporter {
             }
 
             ModelStructure ms = md.getModelStructure();
-            if (ms != null){
+            // <Outputs> is optional in FMI 2.0 (absent when the FMU has no outputs)
+            if (ms != null && ms.getOutputs() != null){
                 Fmi2VariableDependency vd = ms.getOutputs();
                 List<Unknown> unknows = vd.getUnknown();
                 for (Unknown unknow : unknows){
@@ -277,13 +279,24 @@ public class MDImporter {
         Attribute att = this.factory.createAttribute();
         att.setName(var.getName());
 
-        //Initial
-        String initial = var.getInitial();
-        if (initial != null){
-            att.setValue(initial);
+        //Start value
+        String start = startValue(var);
+        if (start != null){
+            att.setValue(start);
         }
 
         att.addStereotype(IINTOCPSPeerModule.MODULE_NAME, INTOCPSStereotypes.VARIABLE);
+
+        //Variable kind: parameter, or variable with or without start value
+        String kind;
+        if (Fmi2Causality.parameter.toString().equals(var.getCausality())) {
+            kind = VariableKind.parameter.toString();
+        } else if (start != null) {
+            kind = VariableKind.varInit.toString();
+        } else {
+            kind = VariableKind.varNoInit.toString();
+        }
+        ModelUtils.addValue(IINTOCPSPeerModule.MODULE_NAME, INTOCPSTagTypes.VARIABLE_VARIABLEKIND, kind, att);
 
         if (var.getInteger() != null){
             att.setType(ModelsUtils.getInt());
@@ -395,10 +408,10 @@ public class MDImporter {
 
         Port port = this.factory.createPort(var.getName(), FMI);
         port.addStereotype(IINTOCPSPeerModule.MODULE_NAME, INTOCPSStereotypes.FLOWPORT);
-        //Initial
-        String initial = var.getInitial();
-        if (initial != null){
-            port.setValue(initial);
+        //Start value
+        String start = startValue(var);
+        if (start != null){
+            port.setValue(start);
         }
 
         if (var.getInteger() != null){
@@ -422,6 +435,31 @@ public class MDImporter {
 
         this.svs.put(var, port);
 
+    }
+
+    /**
+     * Start value of an FMI variable as model text: the start of its type element (FMI 2.0), or, for
+     * files written by INTOCPS before 1.8.00, the value that those versions stored in "initial".
+     */
+    private static String startValue(Fmi2ScalarVariable var) {
+        Object start = null;
+        if (var.getReal() != null) {
+            start = var.getReal().getStart();
+        } else if (var.getInteger() != null) {
+            start = var.getInteger().getStart();
+        } else if (var.getBoolean() != null) {
+            start = var.getBoolean().isStart();
+        } else if (var.getString() != null) {
+            start = var.getString().getStart();
+        }
+        if (start != null) {
+            return start.toString();
+        }
+        String initial = var.getInitial();
+        if (initial != null && !initial.equals("exact") && !initial.equals("approx") && !initial.equals("calculated")) {
+            return initial;
+        }
+        return null;
     }
 
 }

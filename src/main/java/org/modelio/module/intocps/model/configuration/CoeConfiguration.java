@@ -11,7 +11,7 @@ public class CoeConfiguration {
 
 	private Map<String, List<String>> connections = new HashMap<>();
 
-	private Map<String, Float> parameters = new HashMap<>();
+	private Map<String, Object> parameters = new HashMap<>();
 
 
 	public  Map<String, String> getFmus() {
@@ -40,11 +40,11 @@ public class CoeConfiguration {
 		return this.connections;
 	}
 
-	public Map<String, Float> getParameters() {
+	public Map<String, Object> getParameters() {
 		return this.parameters;
 	}
 
-	public void setParameters(Map<String, Float> parameters) {
+	public void setParameters(Map<String, Object> parameters) {
 		this.parameters = parameters;
 	}
 

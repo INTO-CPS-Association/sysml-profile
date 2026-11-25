@@ -43,9 +43,16 @@ import org.modelio.metamodel.uml.statik.Instance;
 import org.modelio.metamodel.uml.statik.Link;
 import org.modelio.metamodel.uml.statik.LinkEnd;
 import org.modelio.metamodel.uml.statik.NameSpace;
+import org.modelio.metamodel.uml.statik.Package;
 import org.modelio.metamodel.uml.statik.Port;
 import org.modelio.metamodel.uml.statik.PortOrientation;
+import org.modelio.module.intocps.api.IINTOCPSPeerModule;
+import org.modelio.module.intocps.api.INTOCPSStereotypes;
+import org.modelio.module.intocps.api.INTOCPSTagTypes;
 import org.modelio.module.intocps.impl.INTOCPSModule;
+import org.modelio.module.intocps.model.enumeration.VariableKind;
+import org.modelio.module.intocps.utils.ModelsUtils;
+import org.modelio.module.sysml.utils.ModelUtils;
 import org.modelio.module.modelermodule.api.IModelerModuleNoteTypes;
 import org.modelio.module.modelermodule.api.IModelerModulePeerModule;
 
@@ -153,19 +160,16 @@ public class ConfigurationExporter {
 
         NameSpace base = bi.getBase();
 
-        //Add variables
+        //Add parameters: only Variable attributes of kind "parameter" are FMU parameters for Maestro
         if (base instanceof Classifier){
             for (Attribute att : ((Classifier) base).getOwnedAttribute()){
-                Float value = null;
-                try{
-                    value = Float.valueOf(att.getValue());
-                }catch (@SuppressWarnings ("unused") Exception e){
-                    value = Float.valueOf("0.0");
+                if (!att.isStereotyped(IINTOCPSPeerModule.MODULE_NAME, INTOCPSStereotypes.VARIABLE)
+                        || !VariableKind.parameter.toString().equals(ModelUtils.getTaggedValue(INTOCPSTagTypes.VARIABLE_VARIABLEKIND, att))) {
+                    continue;
                 }
-                result.getParameters().put("{" + name + "}" + "." + bi.getName() + "." + att.getName(), value);
+                result.getParameters().put("{" + name + "}" + "." + bi.getName() + "." + att.getName(), parameterValue(att));
             }
         }
-
 
         //Add connections
         for (Link link : links){
@@ -208,7 +212,25 @@ public class ConfigurationExporter {
         }
     }
 
-
-
+    /**
+     * JSON value of a parameter, typed like the FMI variable (number, integer, boolean or string);
+     * an empty or invalid value gives the type's default.
+     */
+    private static Object parameterValue(Attribute att) {
+        String value = att.getValue() == null ? "" : att.getValue().trim();
+        Object type = att.getType();
+        try {
+            if (type != null && type.equals(ModelsUtils.getBoolean())) {
+                return Boolean.valueOf(value);
+            } else if (type != null && type.equals(ModelsUtils.getInt())) {
+                return value.isEmpty() ? Integer.valueOf(0) : Integer.valueOf(value);
+            } else if (type != null && type.equals(ModelsUtils.getString())) {
+                return value;
+            }
+            return value.isEmpty() ? Double.valueOf(0) : Double.valueOf(value);
+        } catch (NumberFormatException e) {
+            return type != null && type.equals(ModelsUtils.getInt()) ? (Object) Integer.valueOf(0) : (Object) Double.valueOf(0);
+        }
+    }
 
 }

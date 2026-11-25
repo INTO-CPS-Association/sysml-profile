@@ -34,13 +34,12 @@ INTOCPS 1.8.00 targets **Modelio Open Source 6.2** (binaryversion 6.2.00). Use 1
 
 Building: `repository.modelio.org` is offline. Install the Modelio 6.2 API and the official modules into your local Maven repository from a Modelio 6.2 installation (`sh tools/install-modelio-api.sh /path/to/modelio-6.2.0`), build `modelio-lib/modelio-maven-plugin` from the Modelio v6.2.0 source (`mvn install`), then `mvn clean package` → `target/INTOCPS_1.8.00.jmdac`.
 
-Tested 2026-11-25 on Modelio Open Source 6.2.0 (macOS arm64, Java 21): module deployed with SysMLArchitect 6.2.00 and started; INTO-CPS block (EComponent) with Variable attributes created; FMI 2.0 modelDescription export with Real, Boolean and Integer variables; import back as Block with typed Variable attributes and StrtType interfaces.
+Tested 2026-11-25 on Modelio Open Source 6.2.0 (macOS arm64, Java 21): module deployed with SysMLArchitect 6.2.00 and started; INTO-CPS block (EComponent) with Variable attributes created; FMI 2.0 modelDescription export (variables, parameters, input and output ports) valid against the FMI 2.0.4 schema; import back with values and variable kinds; Maestro co-simulation configuration from a system instance (two components, two connections, typed parameters) and from a package.
 
-Known issues seen in that test (behaviour of the module code, not related to Modelio 6.2):
-- `initial` gets the start value (`initial="1.0"`); FMI 2.0 allows only `exact`, `approx` or `calculated`.
-- every variable gets `valueReference="0"`; FMI requires unique value references.
-- a Boolean variable without value is exported with `start="true"`.
-- import does not restore the `Variable_variableKind` tag (parameter or variable).
+FMI and co-simulation fixes in 1.8.00 (checked against the official FMI 2.0.4 XML schema):
+- Export: start values go in the type element (`<Real start=...>`); `initial` is `exact`, never the value, and is left out for inputs; each variable gets its own `valueReference`; parameters are `variability="fixed"`; a Boolean without value gets no start (parameters and inputs default to false); `<Outputs>` is left out when there are no outputs.
+- Import: reads start values from the type element (files from INTOCPS before 1.8.00, which stored the value in `initial`, still import); sets `Variable_variableKind` (parameter, varInit or varNoInit); accepts files without `<Outputs>`, which made the import fail with a NullPointerException.
+- Maestro configuration export: `parameters` lists only Variable attributes of kind parameter, with typed values (number, integer, boolean, string) instead of every attribute as a float; export from a package works (the check compared with `java.lang.Package` and silently wrote nothing).
 
 ## Contributing
 

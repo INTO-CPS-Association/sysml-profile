@@ -152,50 +152,47 @@ public class FMIFactory {
 
     }
 
+    /**
+     * Sets the FMI type element of a variable and, when {@code withStart} is true, its start value.
+     * An empty value gives the type's default start (0, false, empty string).
+     */
     private void setPrimitiveType(Fmi2ScalarVariable var,
-            NameSpace type, String value) {
+            NameSpace type, String value, boolean withStart) {
 
-       
+        boolean hasValue = value != null && !value.equals("");
+
         if (type.equals(ModelsUtils.getReal())){
             Fmi2ScalarVariable.Real real =  new Fmi2ScalarVariable.Real();
-
             var.setReal(real);
-            if (!(value.equals(""))) {
-                real.setStart(Double.valueOf(value));
-            }else{
-                real.setStart(Double.valueOf("0"));
+            if (withStart) {
+                real.setStart(hasValue ? Double.valueOf(value) : Double.valueOf(0));
             }
         }else if (type.equals(ModelsUtils.getBoolean())){
             Fmi2ScalarVariable.Boolean bool =  new Fmi2ScalarVariable.Boolean();
             var.setBoolean(bool);
-
-            if (!(value.equals(""))) {
-                bool.setStart(Boolean.valueOf(value));
-            }else{
-                bool.setStart(true);
+            if (withStart) {
+                bool.setStart(hasValue ? Boolean.valueOf(value) : Boolean.FALSE);
             }
         }else if (type.equals(ModelsUtils.getString())){
             Fmi2ScalarVariable.String str =  new Fmi2ScalarVariable.String();
             var.setString(str);
-            str.setStart(value);
-
+            if (withStart) {
+                str.setStart(hasValue ? value : "");
+            }
         }else if (type.equals(ModelsUtils.getInt())){
             Fmi2ScalarVariable.Integer integer =  new Fmi2ScalarVariable.Integer();
             var.setInteger(integer);
-            if (!(value.equals(""))) {
-                integer.setStart(Integer.valueOf(value));
-            }else{
-                integer.setStart(Integer.valueOf("0"));
+            if (withStart) {
+                integer.setStart(hasValue ? Integer.valueOf(value) : Integer.valueOf(0));
             }
-
         }
     }
-    
+
     private void setType(Fmi2ScalarVariable var,
-            NameSpace type, String value) {
-        
+            NameSpace type, String value, boolean withStart) {
+
         if (type instanceof DataType){
-            setPrimitiveType(var, type, value);
+            setPrimitiveType(var, type, value, withStart);
         }
     }
     
@@ -258,6 +255,10 @@ public class FMIFactory {
             this.valueRef++;
 
             var.setCausality(causality.toString());
+        // FMI 2.0: a parameter is fixed or tunable, never continuous or discrete
+        if (causality == Fmi2Causality.parameter) {
+            var.setVariability("fixed");
+        }
             exportDescription(att, var);
 
             result.add(var);
@@ -295,17 +296,28 @@ public class FMIFactory {
         }
 
         var.setCausality(causality.toString());
+        // FMI 2.0: a parameter is fixed or tunable, never continuous or discrete
+        if (causality == Fmi2Causality.parameter) {
+            var.setVariability("fixed");
+        }
+
+        // FMI 2.0: every variable has its own value reference
+        var.setValueReference(this.valueRef);
+        this.valueRef++;
 
         exportDescription(elt, var);
 
+        // FMI 2.0: the start value goes in the type element (Real, Integer, Boolean, String);
+        // parameters and inputs must have one, other variables only when a value is given.
+        // "initial" is exact, approx or calculated, never the value; it is not allowed for inputs.
+        boolean hasValue = value != null && !value.equals("");
+        boolean withStart = hasValue || causality == Fmi2Causality.parameter || causality == Fmi2Causality.input;
         if (base != null){
-            setType(var, base, value);
+            setType(var, base, value, withStart);
         }
-
-        if (!value.equals(""))
-            var.setInitial(value);
-        else
-            var.setInitial("0");
+        if (withStart && causality != Fmi2Causality.input) {
+            var.setInitial("exact");
+        }
 
         result.add(var);
         return result;
@@ -351,6 +363,11 @@ public class FMIFactory {
 
                 unknows.add(unknow);
             }
+        }
+
+        // FMI 2.0: <Outputs> must not be empty; leave it out when there are no outputs
+        if (unknows.isEmpty()) {
+            ms.setOutputs(null);
         }
     }
 
