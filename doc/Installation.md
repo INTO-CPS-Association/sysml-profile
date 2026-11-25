@@ -23,10 +23,11 @@ For full licensing details, visit the [Modelio License Page](http://www.modelio.
 ## Download and Installation  
 
 ### Current Version  
-The latest stable version of Modelio is **5.4.1**.  
+The latest stable version of Modelio is **6.2.0** (Java 21 runtime included).  
 
 ### Download  
-Binary distributions for **Windows** and **Linux** are available on the [Modelio Download Page](http://www.modelio.org/downloads/download-modelio.html).  
+Binary distributions for **Windows** and **Linux** are available on the [Modelio releases page](https://github.com/ModelioOpenSource/Modelio/releases).  
+**macOS** (Apple Silicon and Intel): there is no official package yet; a native macOS build is proposed in [ModelioOpenSource/Modelio#148](https://github.com/ModelioOpenSource/Modelio/pull/148).  
 
 ### Installation Instructions  
 1. Download the appropriate binary archive for your operating system.  
@@ -46,9 +47,19 @@ The **INTO-CPS module** extends Modelio's capabilities for system modeling, part
 - **Latest Releases**: [INTO-CPS Releases](https://github.com/INTO-CPS-Association/sysml-profile/releases).  
 - **Issue Reporting**: [Report an Issue](https://github.com/INTO-CPS-Association/sysml-profile/issues/new).  
 
+### Which version  
+
+| Modelio | INTO-CPS module | Required modules |
+|---|---|---|
+| 6.2.x | 1.8.00 | SysMLArchitect 6.2.00 (shipped with Modelio 6.2) |
+| 5.4.x | 1.5.00 | SysMLArchitect for Modelio 5.4 |
+
+Modelio 6.2 opens projects made with Modelio 5.4 and may upgrade their format, after which Modelio 5.4 can no longer open them: keep a copy. In the project, update the INTO-CPS module to 1.8.00 (and SysMLArchitect to 6.2.00) from the module catalog.  
+
 ### Installation Steps  
-1. Download the latest INTO-CPS module (`.jmdac` file) from the [Releases Page](https://github.com/INTO-CPS-Association/sysml-profile/releases).  
+1. Download the INTO-CPS module (`.jmdac` file) for your Modelio version from the [Releases Page](https://github.com/INTO-CPS-Association/sysml-profile/releases).  
 2. Add the module to the Modelio module catalog.  
+3. Install SysMLArchitect in the project first (in Modelio 6.2 it is already in the catalog), then the INTO-CPS module.  
 
 ---
 

@@ -20,9 +20,26 @@ The **INTO-CPS SysML Profile for Modelio** is an open-source module that extends
 
 > **Note**: Links in the documentation (e.g., forge.modelio.org) are outdated. All relevant information will be migrated to this repository.
 
-1. **Module Migration**: Update the module to be compatible with the latest version of Modelio Open Source (5.4.00).
+1. **Module Migration**: done for Modelio Open Source 6.2 (module 1.8.00, see below).
 2. **Documentation Migration**: Migrate all documentation, examples, and guides to this repository for easier access and maintenance.
 3. **Bug Fixes and Enhancements**: Address any known issues and add new features based on user feedback.
+
+## Modelio 6.2 (module 1.8.00)
+
+INTOCPS 1.8.00 targets **Modelio Open Source 6.2** (binaryversion 6.2.00). Use 1.5.00 for Modelio 5.4.
+
+- Built against the Modelio 6.2 API (MDAKit `[6.2.0,6.3.0)`), SysMLArchitect 6.2.00 and ModelerModule 9.6.1, with the official `modelio-maven-plugin` 6.2.0.00. No source change was needed.
+- SysMLArchitect and ModelerModule are now `provided` and declared as required modules, instead of copies of old versions inside the module's `lib/` (sysmlarchitect 5.0.00, modelermodule 9.1.00 and 8.5.14).
+- The module class path lists exactly the jars in `lib/` (stale entries removed: jgit 4.5, session, jsch, jaxb-api); the unused jackson 2.1.4/2.3.1 copies in `src/main/conf/lib` are removed.
+
+Building: `repository.modelio.org` is offline. Install the Modelio 6.2 API and the official modules into your local Maven repository from a Modelio 6.2 installation (`sh tools/install-modelio-api.sh /path/to/modelio-6.2.0`), build `modelio-lib/modelio-maven-plugin` from the Modelio v6.2.0 source (`mvn install`), then `mvn clean package` → `target/INTOCPS_1.8.00.jmdac`.
+
+Tested 2026-11-25 on Modelio Open Source 6.2.0 (macOS arm64, Java 21): module deployed with SysMLArchitect 6.2.00 and started; INTO-CPS block (EComponent) with Variable attributes created; FMI 2.0 modelDescription export (variables, parameters, input and output ports) valid against the FMI 2.0.4 schema; import back with values and variable kinds; Maestro co-simulation configuration from a system instance (two components, two connections, typed parameters) and from a package.
+
+FMI and co-simulation fixes in 1.8.00 (checked against the official FMI 2.0.4 XML schema):
+- Export: start values go in the type element (`<Real start=...>`); `initial` is `exact`, never the value, and is left out for inputs; each variable gets its own `valueReference`; parameters are `variability="fixed"`; a Boolean without value gets no start (parameters and inputs default to false); `<Outputs>` is left out when there are no outputs.
+- Import: reads start values from the type element (files from INTOCPS before 1.8.00, which stored the value in `initial`, still import); sets `Variable_variableKind` (parameter, varInit or varNoInit); accepts files without `<Outputs>`, which made the import fail with a NullPointerException.
+- Maestro configuration export: `parameters` lists only Variable attributes of kind parameter, with typed values (number, integer, boolean, string) instead of every attribute as a float; export from a package works (the check compared with `java.lang.Package` and silently wrote nothing).
 
 ## Contributing
 
